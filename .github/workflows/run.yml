@@ -1,0 +1,21 @@
+name: Run Dev Proxy
+
+on: workflow_dispatch
+
+jobs:
+  run:
+    runs-on: macos-14-arm64
+
+    steps:
+      - name: Download proxy
+        run: |
+          curl -sL -o ./devproxy.zip "https://github.com/microsoft/dev-proxy/releases/download/v0.15.0-beta.1/dev-proxy-osx-arm64-v0.15.0-beta.1.zip"
+      - name: Unzip proxy
+        run: |
+          unzip -o ./devproxy.zip -d ./
+      - name: Make executable
+        run: |
+          chmod +x ./devproxy ./libe_sqlite3.dylib
+      - name: Run proxy
+        run: |
+          ./devproxy --no-first-run
