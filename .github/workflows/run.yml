@@ -7,7 +7,7 @@ jobs:
     runs-on: macos-14
 
     steps:
-      - name: Archictecture
+      - name: Architecture
         run: |
           uname
           uname -m
