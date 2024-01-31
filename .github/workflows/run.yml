@@ -7,11 +7,12 @@ jobs:
     runs-on: macos-14
 
     steps:
-      - name: Versions
+      - name: Diag info
         run: |
           uname
           uname -m
           dotnet --info
+          spctl --status
       - name: Download proxy
         run: |
           curl -sL -o ./devproxy.zip "https://github.com/microsoft/dev-proxy/releases/download/v0.15.0-beta.1/dev-proxy-osx-arm64-v0.15.0-beta.1.zip"
