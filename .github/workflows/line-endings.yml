@@ -1,0 +1,17 @@
+name: Test line endings
+
+on: workflow_dispatch
+
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ matrix.os }}
+          path: script.sh
